@@ -11,9 +11,9 @@
 }
 
 .navbar {
-    background-color: lightblue;
     width: 90vw;
     margin: 0 auto;
+    background-color: lightcoral;
     padding: 10px;
 }
 
