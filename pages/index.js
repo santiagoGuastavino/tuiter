@@ -4,13 +4,25 @@ import Layout from '../components/Layout'
 import Button from '../components/Button'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faGithub} from '@fortawesome/free-brands-svg-icons'
-import {loginWithGitHub} from '../firebase/client'
+import {
+  loginWithGitHub,
+  onFirebaseAuthStateChange
+} from '../firebase/client'
+import {useState, useEffect} from 'react'
 
 export default function Home () {
+
+  const [user, setUser] = useState(undefined)
   
+  useEffect(() => {
+    onFirebaseAuthStateChange(setUser)
+  }, [])
+
   const handleClick = () => {
     loginWithGitHub()
-      .then(user => console.log(user))
+      .then((user) => {
+        setUser(user)
+      })
       .catch(err => console.log(err))
   }
 
@@ -28,10 +40,21 @@ export default function Home () {
           <h2>Talk about development</h2>
           <h2>with developers</h2>
           <div>
-            <Button onClick={handleClick}>
-              <FontAwesomeIcon icon={faGithub} />
-              Login with GitHub
-            </Button>
+            {
+              user === undefined &&
+                <Button onClick={handleClick}>
+                  <FontAwesomeIcon icon={faGithub} />
+                  Login with GitHub
+                </Button>
+            }
+            {
+              user && user.avatar &&
+                <div>
+                  <img src={user.avatar} />
+                  <p>{user.username}</p>
+                  <p>{user.email}</p>
+                </div>
+            }
           </div>
         </section>
       </Layout>
