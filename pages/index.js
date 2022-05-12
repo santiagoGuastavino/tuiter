@@ -1,62 +1,56 @@
-import styles from '../styles/pages/Home.module.css'
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
+import styles from '../styles/pages/Home.module.css'
 import Layout from '../components/Layout'
 import Button from '../components/Button'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faGithub} from '@fortawesome/free-brands-svg-icons'
-import {
-  loginWithGitHub,
-  onFirebaseAuthStateChange
-} from '../firebase/client'
-import {useState, useEffect} from 'react'
+import Avatar from '../components/Avatar'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { onFirebaseAuthStateChange, loginWithGitHub } from '../firebase/client'
 
 export default function Home () {
-
   const [user, setUser] = useState(undefined)
-  
+
   useEffect(() => {
     onFirebaseAuthStateChange(setUser)
-  }, [])
+  }, [user])
 
   const handleClick = () => {
     loginWithGitHub()
-      .then((user) => {
-        setUser(user)
-      })
-      .catch(err => console.log(err))
+      .then(setUser).catch(err => { console.log(err) })
   }
 
   return (
     <>
       <Head>
         <title>tuiter</title>
-        <link rel="icon" href="/icon.ico" />
+        <link rel="icon" href="/new.ico" />
       </Head>
 
       <Layout>
-        <section className={styles.section}>
+        <header className={styles.header}>
           <img src='/tuiter.png' alt='logo' />
           <h1>tuiter</h1>
           <h2>Talk about development</h2>
           <h2>with developers</h2>
-          <div>
-            {
-              user === undefined &&
-                <Button onClick={handleClick}>
-                  <FontAwesomeIcon icon={faGithub} />
-                  Login with GitHub
-                </Button>
-            }
-            {
-              user && user.avatar &&
-                <div>
-                  <img src={user.avatar} />
-                  <p>{user.username}</p>
-                  <p>{user.email}</p>
-                </div>
-            }
-          </div>
-        </section>
+        </header>
+        <div className={styles.user}>
+          {
+            user === undefined &&
+              <Button onClick={handleClick}>
+                <FontAwesomeIcon icon={faGithub} />
+                Login with GitHub
+              </Button>
+          }
+          {
+            user && user.avatar &&
+              <Avatar
+                alt={user.username}
+                src={user.avatar}
+                text={user.username}
+              />
+          }
+        </div>
       </Layout>
     </>
   )
