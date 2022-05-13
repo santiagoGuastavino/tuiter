@@ -26,19 +26,19 @@ const mapUserFromFirebaseAuthToUser = (user) => {
   }
 }
 
+export const onFirebaseAuthStateChange = (onChange) => {
+  const auth = getAuth()
+  return onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const normalizedUser = user ? mapUserFromFirebaseAuthToUser(user) : null
+      onChange(normalizedUser)
+    }
+  })
+}
+
 export const loginWithGitHub = () => {
   const gitHubProvider = new GithubAuthProvider()
   gitHubProvider.setCustomParameters(firebaseConfig)
   const auth = getAuth()
   return signInWithPopup(auth, gitHubProvider)
-}
-
-export const onFirebaseAuthStateChange = (onChange) => {
-  const auth = getAuth()
-  return onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const normalizedUser = mapUserFromFirebaseAuthToUser(user)
-      onChange(normalizedUser)
-    }
-  })
 }

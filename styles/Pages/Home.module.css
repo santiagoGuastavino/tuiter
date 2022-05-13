@@ -1,32 +1,26 @@
 .header {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-end;
     align-items: center;
-    height: 45vh;
-    margin-bottom: 30px;
-}
-
-.header img {
-    width: 120px;
-}
-
-.header h1 {
-    color: var(--primary-color);
-    font-weight: 800;
-    margin: 15px 0;
-    font-size: 32px;
+    border-bottom: 1px solid #ccc;
+    height: 49px;
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .header h2 {
-    color: var(--secondary-color);
-    font-size: 18px;
-    line-height: 27px;
+    font-size: 21px;
+    font-weight: 800;
 }
 
-.user {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-start;
-    align-items: center;
+.section {
+    padding-top: 100px;
+}
+
+.nav {
+    bottom: 0;
+    border-top: 1px solid #ccc;
+    height: 49px;
+    position: fixed;
+    width: 100%;
 }

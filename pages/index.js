@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
-import styles from '../styles/pages/Home.module.css'
+import styles from '../styles/pages/Index.module.css'
 import Layout from '../components/Layout'
 import Button from '../components/Button'
 import Avatar from '../components/Avatar'
@@ -17,7 +17,8 @@ export default function Home () {
 
   const handleClick = () => {
     loginWithGitHub()
-      .then(setUser).catch(err => { console.log(err) })
+      .then(setUser)
+      .catch(err => { console.log(err) })
   }
 
   return (
