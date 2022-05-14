@@ -1,15 +1,14 @@
 .container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .avatar {
-    border-radius: 9999px;
-    height: 49px;
-    width: 49px;
+  border-radius: 9999px;
+  height: 49px;
+  width: 49px;
 }
 
-.avatar + p {
-    font-weight: 700;
-    margin-left: 8px;
+.avatar + strong {
+  margin-left: 8px;
 }

@@ -1,25 +1,31 @@
 .button {
-    align-items: center;
-    background: var(--black);
-    border-radius: 9999px;
-    border: 0;
-    color: var(--white);
-    cursor: pointer;
-    display: flex;
-    flex-flow: row wrap;
-    font-size: 16px;
-    font-weight: 800;
-    justify-content: center;
-    padding: 8px 24px;
-    transition: all .5s ease;
+  align-items: center;
+  background: var(--black);
+  border-radius: 9999px;
+  border: 0;
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 16px;
+  font-weight: 800;
+  justify-content: center;
+  padding: 8px 24px;
+  transition: all .3s ease;
+  user-select: none;
 }
 
 .button:hover {
-    opacity: .7;
+  opacity: .7;
+}
+
+.button[disabled] {
+  pointer-events: none;
+  opacity: .2;
 }
 
 .button > :global(svg) {
-    margin-right: 8px;
-    width: 24px;
-    height: 24px;
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
 }

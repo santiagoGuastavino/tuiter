@@ -10,10 +10,11 @@ _This project is in a WIP state._
 
 - [Node.js](https://nodejs.org)
 - [Next.js](https://nextjs.org/)
+  - [Font Awesome React Component](https://fontawesome.com/v5/docs/web/use-with/react)
 - [Firebase](https://firebase.google.com/)
-    - [Firebase.js](https://www.npmjs.com/package/firebase)
-    - [Firebase Authentication](https://firebase.google.com/docs/auth)
-        - [Authenticate Using GitHub](https://firebase.google.com/docs/auth/web/github-auth)
+  - [Firebase.js](https://www.npmjs.com/package/firebase)
+  - [Firebase Authentication](https://firebase.google.com/docs/auth)
+    - [Authenticate Using GitHub](https://firebase.google.com/docs/auth/web/github-auth)
 - [ESLint](https://www.npmjs.com/package/eslint)
 
 ---

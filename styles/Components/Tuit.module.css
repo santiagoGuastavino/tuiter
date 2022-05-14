@@ -1,0 +1,13 @@
+.article {
+  border-bottom: 1px solid #eee;
+  display: flex;
+  padding: 10px 15px;
+}
+
+.div {
+  margin-right: 10px;
+}
+
+.section p { 
+  line-height: 1.3125;
+}

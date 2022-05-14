@@ -1,23 +1,24 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import useUser, { USER_STATES } from '../hooks/useUser'
 import styles from '../styles/pages/Index.module.css'
 import Layout from '../components/Layout'
 import Button from '../components/Button'
-import Avatar from '../components/Avatar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { onFirebaseAuthStateChange, loginWithGitHub } from '../firebase/client'
+import { loginWithGitHub } from '../firebase/client'
 
 export default function Home () {
-  const [user, setUser] = useState(undefined)
+  const user = useUser()
+  const router = useRouter()
 
   useEffect(() => {
-    onFirebaseAuthStateChange(setUser)
+    user && router.replace('/home')
   }, [user])
 
   const handleClick = () => {
     loginWithGitHub()
-      .then(setUser)
       .catch(err => { console.log(err) })
   }
 
@@ -37,20 +38,13 @@ export default function Home () {
         </header>
         <div className={styles.user}>
           {
-            user === undefined &&
+            user === USER_STATES.NOT_LOGGED &&
               <Button onClick={handleClick}>
                 <FontAwesomeIcon icon={faGithub} />
                 Login with GitHub
               </Button>
           }
-          {
-            user && user.avatar &&
-              <Avatar
-                alt={user.username}
-                src={user.avatar}
-                text={user.username}
-              />
-          }
+          { user === USER_STATES.NOT_KNOWN && <img src={'/spinner.gif'} alt={'spinner'} /> }
         </div>
       </Layout>
     </>

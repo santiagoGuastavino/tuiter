@@ -1,5 +1,11 @@
 import { initializeApp } from 'firebase/app'
 import {
+  getFirestore,
+  addDoc,
+  collection,
+  Timestamp
+} from 'firebase/firestore'
+import {
   getAuth,
   signInWithPopup,
   GithubAuthProvider,
@@ -17,22 +23,21 @@ const firebaseConfig = {
 }
 
 initializeApp(firebaseConfig)
+const db = getFirestore()
 
 const mapUserFromFirebaseAuthToUser = (user) => {
   return {
     avatar: user.photoURL,
     username: user.displayName,
-    email: user.email
+    email: user.email,
+    uid: user.uid
   }
 }
 
 export const onFirebaseAuthStateChange = (onChange) => {
   const auth = getAuth()
   return onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const normalizedUser = user ? mapUserFromFirebaseAuthToUser(user) : null
-      onChange(normalizedUser)
-    }
+    onChange(user && mapUserFromFirebaseAuthToUser(user))
   })
 }
 
@@ -41,4 +46,20 @@ export const loginWithGitHub = () => {
   gitHubProvider.setCustomParameters(firebaseConfig)
   const auth = getAuth()
   return signInWithPopup(auth, gitHubProvider)
+}
+
+export const addTuit = async ({ avatar, content, userId, username }) => {
+  await addDoc(collection(db, 'tuits'), {
+    avatar,
+    content,
+    userId,
+    username,
+    createdAt: Timestamp.fromDate(new Date()),
+    likeCount: 0,
+    shareCount: 0
+  })
+}
+
+export const fetchLatestTuits = () => {
+  
 }

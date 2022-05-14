@@ -1,13 +1,20 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--base-font);
   background-image:
     radial-gradient(var(--background-color) 1px, #fdfdfd 1px),
     radial-gradient(var(--background-color) 1px, #fdfdfd 1px);
   background-position: 0 0, 25px 25px;
   background-size: 50px 50px;
+  overflow: hidden;
 }
 
 a {
@@ -15,10 +22,8 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+textarea, input {
+  font-family: var(--base-font);
 }
 
 :root {
@@ -27,4 +32,5 @@ a {
   --primary-color: #0049ff;
   --secondary-color: #09f;
   --background-color: #0099ff4d;
+  --base-font: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
