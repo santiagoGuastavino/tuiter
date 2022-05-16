@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import useUser from '../../hooks/useUser'
 import Layout from '../../components/Layout'
 import Tuit from '../../components/Tuit'
+import { fetchLatestTuits } from '../../firebase/client'
 
 export default function Home () {
   const [timeline, setTimeline] = useState([])
@@ -10,10 +11,9 @@ export default function Home () {
 
   useEffect(() => {
     user &&
-      fetch('http://localhost:3000/api/statuses/home_timeline')
-        .then(res => res.json())
-        .then(setTimeline)
-        .catch(err => console.log(err))
+    fetchLatestTuits()
+      .then(setTimeline)
+      .catch(err => console.log(err))
   }, [user])
 
   return (
@@ -22,15 +22,19 @@ export default function Home () {
         <h2>Home</h2>
       </header>
       <section className={styles.section}>
-        {timeline.map(({ id, username, avatar, message }) => (
-          <Tuit
-            avatar={avatar}
-            id={id}
-            key={id}
-            message={message}
-            username={username}
-          />
-        ))}
+        {timeline.map(
+          ({ createdAt, id, username, avatar, content, userId }) => (
+            <Tuit
+              avatar={avatar}
+              createdAt={createdAt}
+              id={id}
+              key={id}
+              content={content}
+              username={username}
+              userId={userId}
+            />
+          )
+        )}
       </section>
       <nav className={styles.nav}>
 
