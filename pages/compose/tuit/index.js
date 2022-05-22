@@ -1,6 +1,7 @@
 import styles from '../../../styles/Pages/ComposeTuit.module.css'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 import useUser from '../../../hooks/useUser'
 import Layout from '../../../components/Layout'
 import Button from '../../../components/Button'
@@ -45,18 +46,24 @@ export default function ComposeTuit () {
   const isButtonDisabled = !message.length || status === COMPOSE_STATES.LOADING
 
   return (
-    <Layout>
-      <form onSubmit={handleSubmit}>
-        <textarea
-          className={styles.textarea}
-          placeholder="What's going on?"
-          value={message}
-          onChange={handleChange}
-        ></textarea>
-        <div>
-          <Button disabled={isButtonDisabled}>tuit</Button>
-        </div>
-      </form>
-    </Layout>
+    <>
+      <Head>
+        <title>create a tuit / tuiter</title>
+        <link rel="icon" href="/new.ico" />
+      </Head>
+      <Layout>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            className={styles.textarea}
+            placeholder="What's going on?"
+            value={message}
+            onChange={handleChange}
+          ></textarea>
+          <div>
+            <Button disabled={isButtonDisabled}>tuit</Button>
+          </div>
+        </form>
+      </Layout>
+    </>
   )
 }

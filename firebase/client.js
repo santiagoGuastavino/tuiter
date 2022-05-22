@@ -1,9 +1,11 @@
 import { initializeApp } from 'firebase/app'
 import {
-  getFirestore,
   addDoc,
-  getDocs,
   collection,
+  getDocs,
+  getFirestore,
+  orderBy,
+  query,
   Timestamp
 } from 'firebase/firestore'
 import {
@@ -62,18 +64,17 @@ export const addTuit = async ({ avatar, content, userId, username }) => {
 }
 
 export const fetchLatestTuits = async () => {
-  const { docs } = await getDocs(collection(db, 'tuits'))
+  const latestTuitsQuery = query(collection(db, 'tuits'), orderBy('createdAt', 'desc'))
+  const { docs } = await getDocs(latestTuitsQuery)
   try {
     return docs.map(doc => {
       const data = doc.data()
       const id = doc.id
       const { createdAt } = data
-      const date = new Date(createdAt.seconds * 1000)
-      const normalizedCreatedAt = new Intl.DateTimeFormat('en-GB').format(date)
       return {
         ...data,
         id,
-        createdAt: normalizedCreatedAt
+        createdAt: +createdAt.toDate()
       }
     })
   } catch (err) {

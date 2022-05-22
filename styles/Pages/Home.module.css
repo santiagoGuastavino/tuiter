@@ -16,6 +16,10 @@
   padding-left: 15px;
 }
 
+.section {
+  flex: 1;
+}
+
 .nav {
   background: #fff;
   bottom: 0;
@@ -23,4 +27,32 @@
   height: 49px;
   position: sticky;
   width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.nav div {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav a {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  color: #09f;
+  border-radius: 100%;
+  font-size: 22px;
+  transition: all 0.1s ease;
+}
+
+.nav a:hover {
+  background-color: #0099ff22;
+  color: var(--primary-color);
 }
