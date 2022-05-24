@@ -16,3 +16,10 @@
 .section p { 
   line-height: 1.3125;
 }
+
+.section img {
+  border-radius: 10px;
+  height: auto;
+  width: 100%;
+  margin-top: 10px;
+}

@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import useUser from '../../../hooks/useUser'
-import Layout from '../../../components/Layout'
 import Button from '../../../components/Button'
 import { addTuit, getImgURL, uploadImage } from '../../../firebase/client'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import Avatar from '../../../components/Avatar'
 
 const COMPOSE_STATES = {
   USER_NOT_KNOWN: 0,
@@ -59,7 +59,8 @@ export default function ComposeTuit () {
       avatar: user.avatar,
       content: message,
       userId: user.uid,
-      username: user.username
+      username: user.username,
+      img: imgURL
     })
       .then(() => {
         router.push('/home')
@@ -102,7 +103,14 @@ export default function ComposeTuit () {
         <title>create a tuit / tuiter</title>
         <link rel="icon" href="/new.ico" />
       </Head>
-      <Layout>
+
+      <section className={styles.container}>
+        {
+          user &&
+          <header className={styles.header}>
+            <Avatar src={user.avatar} />
+          </header>
+        }
         <form onSubmit={handleSubmit} className={styles.form}>
           <textarea
             className={styles.textarea}
@@ -115,18 +123,18 @@ export default function ComposeTuit () {
             style={dynamicStyle}
           ></textarea>
           {imgURL &&
-            <section className={styles.section} >
+            <div className={styles.imgRemoval} >
               <button className={styles.button} onClick={() => setImgURL(null)}>
                 <FontAwesomeIcon icon={faXmark} />
               </button>
               <img src={imgURL} alt={imgURL} />
-            </section>
+            </div>
           }
           <div>
             <Button disabled={isButtonDisabled}>tuit</Button>
           </div>
         </form>
-      </Layout>
+      </section>
     </>
   )
 }

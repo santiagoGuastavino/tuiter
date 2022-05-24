@@ -34,3 +34,6 @@ yarn-error.log*
 to-do.txt
 
 .gitignore
+
+# check this later, i'm gonna hide my keys for now
+/firebase/firebase-keys.json

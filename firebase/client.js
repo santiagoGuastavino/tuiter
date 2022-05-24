@@ -58,10 +58,11 @@ export const loginWithGitHub = () => {
   return signInWithPopup(auth, gitHubProvider)
 }
 
-export const addTuit = async ({ avatar, content, userId, username }) => {
+export const addTuit = async ({ avatar, content, img, userId, username }) => {
   await addDoc(collection(db, 'tuits'), {
     avatar,
     content,
+    img,
     userId,
     username,
     createdAt: Timestamp.fromDate(new Date()),

@@ -34,3 +34,28 @@ textarea, input {
   --background-color: #0099ff4d;
   --base-font: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+
+/* from here, the layout style */
+.main {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow-y: auto;
+}
+
+@media(min-width: 520px) {
+  .div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+    
+  .main {
+    height: 90vh;
+    width: 520px;
+  }
+}
