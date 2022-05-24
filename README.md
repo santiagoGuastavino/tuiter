@@ -16,6 +16,7 @@ _This project is in a WIP state._
   - [Firebase Authentication](https://firebase.google.com/docs/auth)
     - [Authenticate Using GitHub](https://firebase.google.com/docs/auth/web/github-auth)
   - [Cloud Firestore](https://firebase.google.com/docs/firestore)
+  - [Firebase Storage](https://firebase.google.com/docs/storage/web/start)
 - [ESLint](https://www.npmjs.com/package/eslint)
 
 ---

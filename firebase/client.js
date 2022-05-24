@@ -10,10 +10,16 @@ import {
 } from 'firebase/firestore'
 import {
   getAuth,
-  signInWithPopup,
   GithubAuthProvider,
-  onAuthStateChanged
+  onAuthStateChanged,
+  signInWithPopup
 } from 'firebase/auth'
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL
+} from 'firebase/storage'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDt1rUHaV9HPDkLGRljyJdzBBLFH9VcTl8',
@@ -25,8 +31,9 @@ const firebaseConfig = {
   measurementId: 'G-6G9EH7YSC7'
 }
 
-initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig)
 const db = getFirestore()
+const storage = getStorage(app)
 
 const mapUserFromFirebaseAuthToUser = (user) => {
   return {
@@ -80,4 +87,19 @@ export const fetchLatestTuits = async () => {
   } catch (err) {
     console.log(err)
   }
+}
+
+export const uploadImage = (file) => {
+  const now = Date.now()
+  const storageRef = ref(storage, `images/${now}_${file.name}`)
+  const task = uploadBytesResumable(storageRef, file)
+  return task
+}
+
+export const getImgURL = (task, callback) => {
+  getDownloadURL(ref(storage, task._metadata.fullPath))
+    .then((url) => {
+      return callback(url)
+    })
+    .catch(err => console.log(err))
 }
