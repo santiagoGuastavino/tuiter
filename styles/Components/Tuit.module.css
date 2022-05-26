@@ -4,13 +4,22 @@
   padding: 10px 15px;
 }
 
+.article:hover {
+  background: #f5f8fa;
+  cursor: pointer;
+}
+
 .div {
   margin-right: 10px;
 }
 
-.date {
+.anchor {
   color: #555;
   font-size: 14px;
+}
+
+.anchor:hover {
+  text-decoration: underline;
 }
 
 .section p { 

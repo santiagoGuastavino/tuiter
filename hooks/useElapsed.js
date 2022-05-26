@@ -28,7 +28,7 @@ export default function useElapsed (timestamp) {
     return () => clearInterval(interval)
   }, [timestamp])
   const rtf = new Intl.RelativeTimeFormat(
-    navigator.language,
+    'en-GB',
     { style: 'long' }
   )
   const { value, unit } = timeElapsed
