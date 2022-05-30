@@ -101,7 +101,7 @@ export default function ComposeTuit () {
     <>
       <Head>
         <title>create a tuit / tuiter</title>
-        <link rel="icon" href="/new.ico" />
+        <link rel="icon" href="/icon.ico" />
       </Head>
 
       <section className={styles.container}>

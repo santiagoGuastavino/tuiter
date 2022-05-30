@@ -23,7 +23,7 @@ export default function Home () {
     <>
       <Head>
         <title>home / tuiter</title>
-        <link rel="icon" href="/new.ico" />
+        <link rel="icon" href="/icon.ico" />
       </Head>
 
       <header className={styles.header}>

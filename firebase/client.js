@@ -71,20 +71,22 @@ export const addTuit = async ({ avatar, content, img, userId, username }) => {
   })
 }
 
+const mapTuitFromFirebaseToTuitObject = (doc) => {
+  const data = doc.data()
+  const id = doc.id
+  const { createdAt } = data
+  return {
+    ...data,
+    id,
+    createdAt: +createdAt.toDate()
+  }
+}
+
 export const fetchLatestTuits = async () => {
   const latestTuitsQuery = query(collection(db, 'tuits'), orderBy('createdAt', 'desc'))
   const { docs } = await getDocs(latestTuitsQuery)
   try {
-    return docs.map(doc => {
-      const data = doc.data()
-      const id = doc.id
-      const { createdAt } = data
-      return {
-        ...data,
-        id,
-        createdAt: +createdAt.toDate()
-      }
-    })
+    return docs.map(mapTuitFromFirebaseToTuitObject)
   } catch (err) {
     console.log(err)
   }

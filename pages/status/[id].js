@@ -13,7 +13,7 @@ export default function TuitPage (props) {
     <>
       <Head>
         <title>dynamic / tuiter</title>
-        <link rel="icon" href="/new.ico" />
+        <link rel="icon" href="/icon.ico" />
       </Head>
 
       <Tuit {...props} />
