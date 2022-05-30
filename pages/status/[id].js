@@ -1,4 +1,3 @@
-// import styles from '../../styles/Pages/TuitPage.module.css'
 import Head from 'next/head'
 import Tuit from '../../components/Tuit'
 import { firestore } from '../../firebase/admin'
@@ -23,7 +22,7 @@ export default function TuitPage (props) {
 
 export async function getStaticPaths () {
   return {
-    paths: [{ params: { id: 'i am not storing any id to use fallback' } }],
+    paths: [],
     fallback: true
   }
 }
