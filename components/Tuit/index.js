@@ -1,4 +1,4 @@
-import styles from '../../styles/Components/Tuit.module.css'
+import styles from '../../styles/Tuit.module.css'
 import Avatar from '../Avatar'
 import useElapsed from '../../hooks/useElapsed'
 import Link from 'next/link'

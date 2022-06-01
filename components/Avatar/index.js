@@ -1,4 +1,4 @@
-import styles from '../../styles/Components/Avatar.module.css'
+import styles from '../../styles/Avatar.module.css'
 
 export default function Avatar ({ alt, src, text }) {
   return (

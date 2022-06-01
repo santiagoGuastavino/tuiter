@@ -1,4 +1,4 @@
-import styles from '../../../styles/Pages/ComposeTuit.module.css'
+import styles from '../../../styles/ComposeTuit.module.css'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
