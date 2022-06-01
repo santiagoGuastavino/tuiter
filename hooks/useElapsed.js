@@ -30,7 +30,7 @@ export default function useElapsed (timestamp) {
   const rtf = new Intl.RelativeTimeFormat(
     'en-GB',
     { style: 'long' }
-  )
+  ).format(new Date())
   const { value, unit } = timeElapsed
   return rtf.format(value, unit)
 }
