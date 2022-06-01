@@ -75,10 +75,13 @@ const mapTuitFromFirebaseToTuitObject = (doc) => {
   const data = doc.data()
   const id = doc.id
   const { createdAt } = data
+  const date = new Date(createdAt.seconds * 1000)
+  const normalizedCreatedAt = new Intl.DateTimeFormat('en-GB').format(date)
+
   return {
     ...data,
     id,
-    createdAt: +createdAt.toDate()
+    createdAt: normalizedCreatedAt
   }
 }
 

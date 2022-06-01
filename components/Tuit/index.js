@@ -1,11 +1,11 @@
 import styles from '../../styles/Tuit.module.css'
 import Avatar from '../Avatar'
-import useElapsed from '../../hooks/useElapsed'
+// import useElapsed from '../../hooks/useElapsed'
 // import Link from 'next/link'
 // import { useRouter } from 'next/router'
 
 export default function Tuit ({ avatar, username, content, createdAt, id, img }) {
-  const elapsed = useElapsed(createdAt)
+  // const elapsed = useElapsed(createdAt)
   // const router = useRouter()
 
   // const handleClick = (e) => {
@@ -27,7 +27,7 @@ export default function Tuit ({ avatar, username, content, createdAt, id, img })
           <span> · </span>
           {/* <Link href={`/status/${id}`}> */}
             <a className={styles.anchor}>
-              <time>{elapsed}</time>
+              <time>{createdAt}</time>
             </a>
           {/* </Link> */}
         </header>
