@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "eslint . --fix",
-    "start": "next start"
+    "start": "next start -p $PORT"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
