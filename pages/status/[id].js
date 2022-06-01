@@ -1,13 +1,8 @@
 import Head from 'next/head'
 import Tuit from '../../components/Tuit'
-import { firestore } from '../../firebase/admin'
-import { useRouter } from 'next/router'
 
-export default function TuitPage (props) {
-  const router = useRouter()
-
-  if (router.isFallback) return <h1>Loading...</h1>
-
+// missing prop param
+export default function TuitPage () {
   return (
     <>
       <Head>
@@ -15,37 +10,27 @@ export default function TuitPage (props) {
         <link rel="icon" href="/icon.ico" />
       </Head>
 
-      <Tuit {...props} />
+      <Tuit
+      // {...props}
+      />
     </>
   )
 }
 
-export async function getStaticPaths () {
-  return {
-    paths: [],
-    fallback: true
-  }
-}
+// export async function getServerSideProps (context) {
+//   const { params, res } = context
+//   const { id } = params
 
-export async function getStaticProps (context) {
-  const { params } = context
-  const { id } = params
-
-  return firestore
-    .collection('tuits')
-    .doc(id)
-    .get()
-    .then(doc => {
-      const data = doc.data()
-      const id = doc.id
-      const { createdAt } = data
-      return {
-        props: {
-          ...data,
-          id,
-          createdAt: +createdAt.toDate()
-        }
-      }
-    })
-    .catch(err => console.log(err))
-}
+//   const response = await fetch()
+//   try {
+//     if (response.ok) {
+//       const props = response.json()
+//       return { props }
+//     }
+//     if (res) {
+//       res.writeHead(404).end()
+//     }
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
