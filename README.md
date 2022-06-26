@@ -22,4 +22,4 @@ _This project is in a WIP state._
 
 ---
 
-This web app is yet to be deployed.
+This Next.js Web App has been deployed to [Vercel](https://vercel.com/).
