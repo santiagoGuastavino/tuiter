@@ -1,12 +1,14 @@
 [tuiter](https://tuiter.vercel.app/)
 ---
 
-_**tuiter** is a "Twitter Mockup" with a twist._
-_Developed for educational purposes and for fun's sake._  
-_This website was built with [Next.js Framework](https://nextjs.org/)._  
-_This project is in a WIP state._  
+**tuiter** is a "Twitter Mockup" with a twist.  
+Developed for educational purposes and for fun's sake.  
+This website was built with [Next.js Framework](https://nextjs.org/).  
+The back-end is solved with Firebase.  
 
-<h3>For this project I used:</h3>  
+---
+
+#### Project dependencies:
 
 - [Node.js](https://nodejs.org)
 - [Next.js](https://nextjs.org/)
@@ -18,7 +20,6 @@ _This project is in a WIP state._
   - [Cloud Firestore](https://firebase.google.com/docs/firestore)
   - [Firebase Storage](https://firebase.google.com/docs/storage/web/start)
   - [Firebase Admin SDK](https://firebase.google.com/docs/admin/setup)
-- [ESLint](https://www.npmjs.com/package/eslint)
 
 ---
 
